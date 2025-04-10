@@ -231,8 +231,6 @@ public partial class Radar : BaseSettingsPlugin<RadarSettings>
         if (smallMap.IsVisible)
         {
             var mapCenter = smallMap.MapCenter + new Vector2(Settings.Debug.MapCenterOffsetX, Settings.Debug.MapCenterOffsetY);
-            _mapScale = smallMap.MapScale * Settings.CustomScale;
-            DrawLargeMap(mapCenter);
             DrawTargets(mapCenter);
         }
 
@@ -283,6 +281,7 @@ public partial class Radar : BaseSettingsPlugin<RadarSettings>
                 }
             }
         }
+
         if (Settings.PathfindingSettings.WorldPathSettings.ShowPathsToTargets &&
             (!smallMap.IsVisible || !Settings.PathfindingSettings.WorldPathSettings.ShowPathsToTargetsOnlyWithClosedMap))
         {
