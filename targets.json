@@ -513,7 +513,7 @@
     {
       "Name": "Metadata/Terrain/Woods/Manor/Features/Chapel_boss_01.tdt",
       "ExpectedCount": 1,
-      "DisplayName": "Candlemass (+8% Max Life)"
+      "DisplayName": "Candlemass (+5% Max Life)"
     },
     {
       "Name": "Metadata/Terrain/Woods/Manor/Interior/Features/ThickWall_OpenDoor_01.tdt",
