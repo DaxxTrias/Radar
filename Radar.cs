@@ -219,7 +219,6 @@ public partial class Radar : BaseSettingsPlugin<RadarSettings>
         _backGroundWindowPtr = ImGui.GetWindowDrawList();
         var map = ingameUi.Map;
         var largeMap = map.LargeMap.AsObject<SubMap>();
-        var smallMap = map.SmallMiniMap.AsObject<SubMap>();
         if (largeMap.IsVisible)
         {
             var mapCenter = largeMap.MapCenter + new Vector2(Settings.Debug.MapCenterOffsetX, Settings.Debug.MapCenterOffsetY);
@@ -228,63 +227,14 @@ public partial class Radar : BaseSettingsPlugin<RadarSettings>
             DrawTargets(mapCenter);
         }
 
-        if (smallMap.IsVisible)
-        {
-            var mapCenter = smallMap.MapCenter + new Vector2(Settings.Debug.MapCenterOffsetX, Settings.Debug.MapCenterOffsetY);
-            _mapScale = smallMap.MapScale * Settings.CustomScale;
-            DrawLargeMap(mapCenter);
-            DrawTargets(mapCenter);
-        }
-
-        DrawWorldPaths(largeMap, smallMap);
+        DrawWorldPaths(largeMap);
         ImGui.End();
     }
 
-    private void DrawWorldPaths(SubMap largeMap, SubMap smallMap)
+    private void DrawWorldPaths(SubMap largeMap)
     {
         if (Settings.PathfindingSettings.WorldPathSettings.ShowPathsToTargets &&
             (!largeMap.IsVisible || !Settings.PathfindingSettings.WorldPathSettings.ShowPathsToTargetsOnlyWithClosedMap))
-        {
-            var player = GameController.Game.IngameState.Data.LocalPlayer;
-            var playerRender = player?.GetComponent<ExileCore2.PoEMemory.Components.Render>();
-            if (playerRender == null)
-                return;
-            var initPos = GameController.IngameState.Camera.WorldToScreen(playerRender.Pos with { Z = playerRender.RenderStruct.Height });
-            foreach (var (route, offsetAmount) in _routes.Values
-                         .GroupBy(x => x.Path.Count < 2 ? 0 : (x.Path[1] - x.Path[0]) switch { var diff => Math.Atan2(diff.Y, diff.X) })
-                         .SelectMany(group => group.Select((route, i) => (route, i - group.Count() / 2.0f + 0.5f))))
-            {
-                var p0 = initPos;
-                var p0WithOffset = p0;
-                var i = 0;
-                foreach (var elem in route.Path)
-                {
-                    var p1 = GameController.IngameState.Camera.WorldToScreen(
-                        new Vector3(elem.X * GridToWorldMultiplier, elem.Y * GridToWorldMultiplier, _heightData[elem.Y][elem.X]));
-                    var offsetDirection = Settings.PathfindingSettings.WorldPathSettings.OffsetPaths
-                        ? (p1 - p0) switch { var s => new Vector2(s.Y, -s.X) / s.Length() }
-                        : Vector2.Zero;
-                    var finalOffset = offsetDirection * offsetAmount * Settings.PathfindingSettings.WorldPathSettings.PathThickness;
-                    p0 = p1;
-                    p1 += finalOffset;
-                    if (++i % Settings.PathfindingSettings.WorldPathSettings.DrawEveryNthSegment == 0)
-                    {
-                        if (_rect.Contains(p0WithOffset) || _rect.Contains(p1))
-                        {
-                            Graphics.DrawLine(p0WithOffset, p1, Settings.PathfindingSettings.WorldPathSettings.PathThickness, route.WorldColor());
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
-
-                    p0WithOffset = p1;
-                }
-            }
-        }
-        if (Settings.PathfindingSettings.WorldPathSettings.ShowPathsToTargets &&
-            (!smallMap.IsVisible || !Settings.PathfindingSettings.WorldPathSettings.ShowPathsToTargetsOnlyWithClosedMap))
         {
             var player = GameController.Game.IngameState.Data.LocalPlayer;
             var playerRender = player?.GetComponent<ExileCore2.PoEMemory.Components.Render>();
