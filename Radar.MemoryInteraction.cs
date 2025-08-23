@@ -94,7 +94,7 @@ public partial class Radar
                             var edgeToUnwalkable = Clamp((t - (1f - eps)) / aaWidth, 0f, 1f);
 
                             var walkableColor = new Vector4(1f, 1f, 1f, 0.00f);
-                            var outlineTarget = Settings.TerrainColor.Value.ToVector4().ToVector4Num();
+                            var outlineTarget = Settings.TerrainColor.Value.ToImguiVec4();
 
                             var color = Lerp(walkableColor, outlineTarget, walkableToEdge);
                             color = Lerp(color, color with { W = 0f }, edgeToUnwalkable);
