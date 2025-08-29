@@ -80,7 +80,7 @@ public partial class Radar : BaseSettingsPlugin<RadarSettings>
 
             if (Settings.AutoDumpInstanceOnAreaChange)
             {
-                DumpInstanceData($@"{DirectoryFullName}\instance_dumps\{GameController.Area.CurrentArea.Area.RawName}_{SanitizeAreaName(GameController.Area.CurrentArea.Area.Name)}.json");
+                DumpInstanceData($@"{DirectoryFullName}\instance_dumps\{GameController.Area.CurrentArea.Area.RawName}_{SanitizeAreaName(GameController.Area.CurrentArea.Area.Name)}.json.gz");
             }
 
             GenerateMapTexture();
@@ -185,7 +185,7 @@ public partial class Radar : BaseSettingsPlugin<RadarSettings>
     {
         if (Settings.ManuallyDumpInstance.PressedOnce())
         {
-            DumpInstanceData($@"{DirectoryFullName}\instance_dumps\{GameController.Area.CurrentArea.Area.RawName}_{SanitizeAreaName(GameController.Area.CurrentArea.Area.Name)}.json");
+            DumpInstanceData($@"{DirectoryFullName}\instance_dumps\{GameController.Area.CurrentArea.Area.RawName}_{SanitizeAreaName(GameController.Area.CurrentArea.Area.Name)}.json.gz");
         }
 
         var ingameUi = GameController.Game.IngameState.IngameUi;
