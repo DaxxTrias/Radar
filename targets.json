@@ -1293,10 +1293,22 @@
         "ExpectedCount": 1,
         "DisplayName": "Holton Estate"
     },
-      {
+    {
         "Name": "Metadata/Terrain/Interlude/Part1/P1_4/Chaple_01.tdt",
         "ExpectedCount": 1,
         "DisplayName": "Bosses"
+    },
+      {
+        "Name": "Metadata/Terrain/Interlude/Part1/P1_4/Prison_entrance.tdt",
+        "ExpectedCount": 1,
+        "DisplayName": "Woven"
+    }
+  ],
+  "P1_5": [
+    {
+        "Name": "Metadata/Terrain/Interlude/Part1/P1_5/Holten_Prison_Bossroom.tdt",
+        "ExpectedCount": 1,
+        "DisplayName": "Boss"
     }
   ],
   "P1_6": [
