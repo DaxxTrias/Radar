@@ -986,6 +986,70 @@
       "DisplayName": "Aggorat"
     }
   ],
+  "G4_1_1": [
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/Island/Volcano/Goblins/Features/GoblinTownArena_01.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Goblin Arena"
+    },
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/Island/Volcano/Goblins/Features/GoblinMinesEntrance_01.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Volcanic Warrens"
+    },
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/Island/UnwalkableCliff/IsleOfKin/UnwalkableCliff_to_Ocean_CvSt_01.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Quest - Treasure map?"
+    },
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/Island/Volcano/SulphurRockVein_01.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Voltaxic spire"
+    },
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/Island/Volcano/FailedDelveHub_01.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Lesser jewellers orb"
+    },
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/Island/Volcano/RhoaCamp_02.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Rhoa - No reward?"
+    },
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/Island/Volcano/RhoaCamp_01.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Rhoa - No reward?"
+    },
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/Island/Volcano/BeastCamp_01.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Rare - Good rewards"
+    }
+  ],
+  "G4_1_2": [
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/CoralDungeon/Features/GoblinCaveEntrance_01.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Isle of Kin"
+    },
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/CoralDungeon/Features/GoblinCaveArena/GoblinCaveArena_02.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Rares"
+    },
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/CoralDungeon/Features/GoblinCaveArena/GoblinCaveArena_01.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Goblin Arena1"
+    },
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/CoralDungeon/Features/GoblinCave/ShrineLandmark_01.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Shrine - No loot?"
+    }
+  ],
   "G4_2_1": [
     {
       "Name": "Metadata/Terrain/Islands/Tiles/Island/KedgeBay/BossArena_01.tdt",
