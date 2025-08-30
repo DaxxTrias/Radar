@@ -921,12 +921,12 @@
     },
     {
       "Name": "Metadata/Terrain/Dungeon/Ziggurat/ziggurat_outerwall_end_stairsup_01.tdt",
-      "ExpectedCount": 1,
+      "ExpectedCount": 2,
       "DisplayName": "Stairs Up"
     },
     {
       "Name": "Metadata/Terrain/Dungeon/Ziggurat/ziggurat_outerwall_end_stairsup_02.tdt",
-      "ExpectedCount": 1,
+      "ExpectedCount": 2,
       "DisplayName": "Stairs Up"
     },
     {
