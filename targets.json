@@ -1152,6 +1152,100 @@
       "DisplayName": "Boss - Yama"
     }
   ],
+  "G4_7": [
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/Island/ShrikeIsland/ShrikeIslandArena.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Arena"
+    },
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/CoralDungeon/Thickwall/Island/Birdnest_Cc_01.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Quest - Map piece"
+    }
+  ],
+  "G4_5_1": [
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/Prison/Features/dungeon_prison_entrance_down_v01_01.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Dungeon entrance down"
+    },
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/Prison/Features/prison_armoury_01.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Armoury"
+    },
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/Prison/Features/dungeon_prison_chapel_01.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Flask buff - Need key"
+    }
+  ],
+  "G4_5_2": [
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/Prison/Features/LowerPrison/Maximumprison.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Boss"
+    },
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/Prison/Features/LowerPrison/Warden_Office.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Warden office"
+    },
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/Prison/Features/dungeon_prison_chapel_01.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Flask buff - Need key"
+    }
+  ],
+  "G4_8b": [
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/TwilightIsland/Feature/TwilightArena.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Boss"
+    },
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/TwilightIsland/Feature/TwilightLighthouse.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Bell - Currency"
+    }
+  ],
+  "G4_10": [
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/TwilightIsland/PrecursorRuins/Arena/BossArena_Forge_PCR_01.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Boss"
+    },
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/TwilightIsland/DigSite/DigSiteFeature/Uncovered_Precursor_Feature_02.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Chest"
+    }
+  ],
+  "G4_11_1b": [
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/BloodFever/Features/Ngakanu/Medicine_Lady_01.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Medicine lady"
+    },
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/BloodFever/Features/Ngakanu/NgakanuToBloodFever_01.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Heart of the Tribe"
+    }
+  ],
+  "G4_11_2": [
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/BloodFever/Features/ArenaCombined/ArenaCombined_01.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Boss"
+    },
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/BloodFever/Features/Whare_fill_02.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Rare chests"
+    }
+  ],
   "MapAlpineRidge": [
     {
       "Name": "pinnacle",
@@ -1369,97 +1463,12 @@
     {
         "Name": "Metadata/Terrain/islands/tiles/coraldungeon/features/area_transition_stww_01.tdt",
         "ExpectedCount": 3,
-        "DisplayName": "Area Stww"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/island/karuilowerledge/karuilowerledge_unwalkablecliff_to_walkable_stst_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "waypoint?"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/island/lowerledge/lowerledge_unwalkablecliff_to_walkable_stst_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Waypoint?"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/island/lowerledge/journeysend/lowerledge_unwalkablecliff_to_walkable_stst_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Waypoint?"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/island/lowerledge/kedgebay/lowerledge_unwalkablecliff_to_walkable_stst_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Waypoint?"
+        "DisplayName": "Transition"
     },
     {
         "Name": "Metadata/Terrain/islands/tiles/island/oceanledge/oceanledge_to_lowerledge_x_karui_01.tdt",
         "ExpectedCount": 3,
         "DisplayName": "Lowerledge X Karui"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/island/oceanledge/oceanledge_to_walkablecliffocean_cvcv_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Walkablecliffocean Cvcv"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/island/oceanledge/oceanledge_unwalkablecliffocean_to_walkable_stst_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Waypoint?"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/island/oceanledge/kedgebay/oceanledge_to_unwalkablecliffocean_to_lowerledge_x_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Unwalkablecliffocean To Lowerledge X"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/island/oceanledge/kedgebay/oceanledge_to_unwalkablecliffocean_x_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Unwalkablecliffocean X"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/island/oceanledge/kedgebay/oceanledge_unwalkablecliffocean_to_walkable_stst_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Waypoint?"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/island/oceanledge/kedgebay/oceanledge_walkablecliffocean_to_unwalkable_stst_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Unwalkable Stst"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/island/oceanledge/shrikeisland/oceanledge_to_oceanledgecliff_cvcv_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Oceanledgecliff Cvcv"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/island/oceanledge/shrikeisland/oceanledge_unwalkablecliffocean_to_walkable_stst_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Waypoint?"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/island/unwalkablecliff/unwalkablecliff_to_walkable_stst_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Waypoint?"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/island/unwalkablecliffocean/unwalkablecliffocean_to_walkable_stst_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Waypoint?"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/island/unwalkablecliffocean/kedgebay/unwalkablecliffocean_to_walkable_stst_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Waypoint?"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/island/unwalkablecliffocean/shrikeisland/unwalkablecliffocean_to_walkable_stst_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Waypoint?"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/island/unwalkableledge/unwalkableledge_unwalkablecliff_to_walkable_stst_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Waypoint?"
     },
     {
         "Name": "Metadata/Terrain/islands/tiles/kalguurship/kalguurship_town_01.tdt",
@@ -1475,61 +1484,6 @@
         "Name": "Metadata/Terrain/islands/tiles/kalguurship/kalguurship_town_02.tdt",
         "ExpectedCount": 3,
         "DisplayName": "Kalguur town?"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/loftysummit/oceanledge/oceanledge_unwalkablecliffocean_to_walkable_stst_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Waypoint?"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/loftysummit/oceanledge/oceanledge_walkablecliffocean_to_unwalkable_stst_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Unwalkable Stst"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/loftysummit/unwalkablecliffocean/unwalkablecliffocean_to_walkable_stst_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Waypoint?"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/prison/cellblock/cellblockwall_cc_torture.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Rture"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/prison/cellblock/cellblockwall_st_torture.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Rture"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/prison/stairs/dungeon_prison_stairs_to_crevice_v01_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Crevice V"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/prison/stairs/dungeon_prison_stairs_to_crevice_v02_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Crevice V"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/prison/stairs/dungeon_prison_stairs_to_ledge_v01_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Ledge V"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/prison/thickwall/prison_thickwall_abysswall_x_to_alt_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Alt"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/prison/thickwall/prison_thickwall_cc_to_alt_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Alt"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/prison/thickwall/prison_thickwall_x_to_alt_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Alt"
     },
     {
       "Name": "Metadata/Terrain/Woods/Woods/AzmeriLeague/Features/arenaTransition_01.tdt",
