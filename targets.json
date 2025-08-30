@@ -1246,6 +1246,71 @@
       "DisplayName": "Rare chests"
     }
   ],
+  "P1_1": [
+    {
+        "Name": "Metadata/Terrain/interlude/part1/p1_1/feature/forest_transition_01.tdt",
+        "ExpectedCount": 3,
+        "DisplayName": "Forest 1 of 2"
+    },
+    {
+        "Name": "Metadata/Terrain/interlude/part1/p1_1/feature/monolith_transition_01.tdt",
+        "ExpectedCount": 1,
+        "DisplayName": "Stones of serle"
+    }
+  ],
+  "P1_2": [
+    {
+        "Name": "Metadata/Terrain/interlude/part1/p1_2/feature/farmlands_transition_01.tdt",
+        "ExpectedCount": 1,
+        "DisplayName": "Farmlands"
+    },
+      {
+        "Name": "Metadata/Terrain/Maps/UniqueMegalith/Tiles/RitualClearing02.tdt",
+        "ExpectedCount": 1,
+        "DisplayName": "Boss"
+    }
+  ],
+  "P1_3": [
+    {
+        "Name": "Metadata/Terrain/interlude/part1/p1_3/holten_transition_01.tdt",
+        "ExpectedCount": 1,
+        "DisplayName": "Holten"
+    }
+  ],
+  "P1_4": [
+    {
+        "Name": "Metadata/Terrain/interlude/part1/p1_4/blackwood_transition_01.tdt",
+        "ExpectedCount": 1,
+        "DisplayName": "Blackwood"
+    },
+    {
+        "Name": "Metadata/Terrain/interlude/part1/p1_4/holtondocktransition.tdt",
+        "ExpectedCount": 1,
+        "DisplayName": "Soul Ferryman - Sells runes"
+    },
+    {
+        "Name": "Metadata/Terrain/interlude/part1/p1_4/holton_estate_transition_01.tdt",
+        "ExpectedCount": 1,
+        "DisplayName": "Holton Estate"
+    },
+      {
+        "Name": "Metadata/Terrain/Interlude/Part1/P1_4/Chaple_01.tdt",
+        "ExpectedCount": 1,
+        "DisplayName": "Bosses"
+    }
+  ],
+  "P1_6": [
+    {
+        "Name": "Metadata/Terrain/Maps/Derelict/Tiles/StairsUp_01.tdt",
+        "ExpectedCount": 1,
+        "DisplayName": "Boss stairs"
+    },
+      {
+        "Name": "Metadata/Terrain/Maps/Derelict/Tiles/HoltenBossStairsDown_01.tdt",
+        "ExpectedCount": 1,
+        "DisplayName": "Boss stairs"
+    }
+  ],
   "P2_1": [
     {
       "Name": "Metadata/Terrain/Interlude/Part2/P2_1/Dregs_Transition.tdt",
@@ -1285,6 +1350,13 @@
       "Name": "Metadata/Terrain/Gallows/Act4_Interlude/Part2/P2_3/Tiles/SealPillar_01.tdt",
       "ExpectedCount": 8,
       "DisplayName": "2 Seal locations - Loot"
+    }
+  ],
+  "P2_4": [
+    {
+        "Name": "Metadata/Terrain/interlude/part2/p2_4/saitwaste_entrance_transition.tdt",
+        "ExpectedCount": 3,
+        "DisplayName": "Saitwaste Entrance"
     }
   ],
   "P2_5": [
@@ -1345,6 +1417,18 @@
   "P3_3": [
       {
         "Name": "Metadata/Terrain/Interlude/Part3/P3_3/GlacialTarn_Bossroom.tdt",
+        "ExpectedCount": 1,
+        "DisplayName": "Boss"
+    },
+        {
+        "Name": "Metadata/Terrain/Maps/FrozenFalls/Tiles/Cove_01.tdt",
+        "ExpectedCount": 1,
+        "DisplayName": "Coves"
+    }
+  ],
+  "P3_4": [
+      {
+        "Name": "Metadata/Terrain/Interlude/Part3/P3_4/Cave_Bossroom.tdt",
         "ExpectedCount": 1,
         "DisplayName": "Boss"
     }
@@ -1479,66 +1563,6 @@
     }
   ],
   "*": [
-    {
-        "Name": "Metadata/Terrain/interlude/part1/p1_1/feature/forest_transition_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Forest"
-    },
-    {
-        "Name": "Metadata/Terrain/interlude/part1/p1_1/feature/monolith_transition_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Monolith"
-    },
-    {
-        "Name": "Metadata/Terrain/interlude/part1/p1_2/feature/farmlands_transition_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Farmlands"
-    },
-    {
-        "Name": "Metadata/Terrain/interlude/part1/p1_3/holten_transition_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Holten"
-    },
-    {
-        "Name": "Metadata/Terrain/interlude/part1/p1_4/blackwood_transition_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Blackwood"
-    },
-    {
-        "Name": "Metadata/Terrain/interlude/part1/p1_4/holtondocktransition.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Holtondock"
-    },
-    {
-        "Name": "Metadata/Terrain/interlude/part1/p1_4/holton_estate_transition_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Holton Estate"
-    },
-    {
-        "Name": "Metadata/Terrain/interlude/part1/p1_4/manorwall/manor_to_towerriver_cvcv_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Towerriver Cvcv"
-    },
-    {
-        "Name": "Metadata/Terrain/interlude/part1/p1_4/manorwall/outermanor_to_river_cvcv_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "River Cvcv"
-    },
-    {
-        "Name": "Metadata/Terrain/interlude/part1/p1_4/manorwall/outermanor_to_river_stst_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "River Stst"
-    },
-    {
-        "Name": "Metadata/Terrain/interlude/part1/p1_town/blacksmith_refruge_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Blacksmith Refruge 01"
-    },
-    {
-        "Name": "Metadata/Terrain/interlude/part2/p2_4/saitwaste_entrance_transition.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Saitwaste Entrance"
-    },
     {
         "Name": "Metadata/Terrain/islands/tiles/bloodfever/wharewall/alleyway_to_smallalley_ccst_01.tdt",
         "ExpectedCount": 3,
