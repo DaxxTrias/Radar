@@ -1246,6 +1246,78 @@
       "DisplayName": "Rare chests"
     }
   ],
+  "P2_1": [
+    {
+      "Name": "Metadata/Terrain/Interlude/Part2/P2_1/Dregs_Transition.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Pools of Khatal"
+    },
+    {
+      "Name": "Metadata/Terrain/Interlude/Part2/P2_1/Forge_Transition.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Forge"
+    },
+    {
+      "Name": "Metadata/Terrain/Interlude/Part2/P2_1/Salt_Waste_Bossroom.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Boss"
+    },
+    {
+        "Name": "Metadata/Terrain/interlude/part2/p2_1/gates_exit_transition_01.tdt",
+        "ExpectedCount": 1,
+        "DisplayName": "Galai Gates"
+    }
+  ],
+  "P2_2": [
+    {
+      "Name": "Metadata/Terrain/Interlude/Part2/P2_2/PenitentArchive_Exit.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Exit"
+    }
+  ],
+  "P2_3": [
+    {
+      "Name": "Metadata/Terrain/Interlude/Part2/P2_3/BossRoomTile.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Boss"
+    },
+    {
+      "Name": "Metadata/Terrain/Gallows/Act4_Interlude/Part2/P2_3/Tiles/SealPillar_01.tdt",
+      "ExpectedCount": 8,
+      "DisplayName": "2 Seal locations - Loot"
+    }
+  ],
+  "P2_5": [
+    {
+      "Name": "Metadata/Terrain/Interlude/Part2/Gates/AreaTransitions/GatesEnd_01.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Gates end"
+    }
+  ],
+  "P2_6": [
+    {
+      "Name": "Metadata/Terrain/Maps/SevenWaters/Tiles/Feature/Arena_Transition_01.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Entrance"
+    },
+    {
+      "Name": "Metadata/Terrain/Maps/SevenWaters/Tiles/BuildingWall/BuildingWall_X_01.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Pillars - Buff choice"
+    }
+  ],
+  "P2_7": [
+    {
+      "Name": "Metadata/Terrain/Interlude/Part2/P2_7/Qimah_bossroom.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Boss"
+    },
+    {
+      "Name": "Metadata/Terrain/Maps/SevenWaters/Tiles/BuildingWall/BuildingWall_X_01.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Pillars - Buff choice"
+    }
+  ],
   "MapAlpineRidge": [
     {
       "Name": "pinnacle",
@@ -1404,31 +1476,6 @@
         "Name": "Metadata/Terrain/interlude/part1/p1_town/blacksmith_refruge_01.tdt",
         "ExpectedCount": 3,
         "DisplayName": "Blacksmith Refruge 01"
-    },
-    {
-        "Name": "Metadata/Terrain/interlude/part2/gates/areatransitions/gatesend_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Gatesend 01"
-    },
-    {
-        "Name": "Metadata/Terrain/interlude/part2/p2_1/crossroad_bazzar_town.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Wn"
-    },
-    {
-        "Name": "Metadata/Terrain/interlude/part2/p2_1/dregs_transition.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Dregs"
-    },
-    {
-        "Name": "Metadata/Terrain/interlude/part2/p2_1/forge_transition.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Forge"
-    },
-    {
-        "Name": "Metadata/Terrain/interlude/part2/p2_1/gates_exit_transition_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Gates Exit"
     },
     {
         "Name": "Metadata/Terrain/interlude/part2/p2_4/saitwaste_entrance_transition.tdt",
