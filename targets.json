@@ -986,6 +986,23 @@
       "DisplayName": "Aggorat"
     }
   ],
+  "G4_2_1": [
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/Island/KedgeBay/BossArena_01.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Arena - Orb of Alchemy?"
+    },
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/Island/Features/UnwalkableCliff_Transition_Up_01.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Journey's end"
+    },
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/Island/UnwalkableCliff/KedgeBay/UnwalkableCliff_CaveEntrance_01.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Quest - deadman chest"
+    }
+  ],
   "MapAlpineRidge": [
     {
       "Name": "pinnacle",
@@ -1691,11 +1708,6 @@
         "DisplayName": "P To Wildcard Stmm"
     },
     {
-        "Name": "Metadata/Terrain/islands/tiles/island/features/unwalkablecliff_transition_up_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Unwalkablecliff Up"
-    },
-    {
         "Name": "Metadata/Terrain/islands/tiles/island/features/unwalkablecliff_transition_up_02.tdt",
         "ExpectedCount": 3,
         "DisplayName": "Unwalkablecliff Up"
@@ -1791,11 +1803,6 @@
         "DisplayName": "Karuilowerledge Cvst"
     },
     {
-        "Name": "Metadata/Terrain/islands/tiles/island/oceanledge/oceanledge_to_karuilowerledge_stst_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Karuilowerledge Stst"
-    },
-    {
         "Name": "Metadata/Terrain/islands/tiles/island/oceanledge/oceanledge_to_lowerledge_cvcv_01.tdt",
         "ExpectedCount": 3,
         "DisplayName": "Lowerledge Cvcv"
@@ -1804,11 +1811,6 @@
         "Name": "Metadata/Terrain/islands/tiles/island/oceanledge/oceanledge_to_lowerledge_cvst_01.tdt",
         "ExpectedCount": 3,
         "DisplayName": "Lowerledge Cvst"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/island/oceanledge/oceanledge_to_lowerledge_stst_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Lowerledge Stst"
     },
     {
         "Name": "Metadata/Terrain/islands/tiles/island/oceanledge/oceanledge_to_lowerledge_x_karui_01.tdt",
@@ -1846,11 +1848,6 @@
         "DisplayName": "Lowerledge Cvst"
     },
     {
-        "Name": "Metadata/Terrain/islands/tiles/island/oceanledge/journeysend/oceanledge_to_lowerledge_stst_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Lowerledge Stst"
-    },
-    {
         "Name": "Metadata/Terrain/islands/tiles/island/oceanledge/journeysend/oceanledge_to_unwalkablecliffocean_to_lowerledge_x_01.tdt",
         "ExpectedCount": 3,
         "DisplayName": "Unwalkablecliffocean To Lowerledge X"
@@ -1879,16 +1876,6 @@
         "Name": "Metadata/Terrain/islands/tiles/island/oceanledge/kedgebay/kedgeoceanledge_to_lowerledge_cvst_01.tdt",
         "ExpectedCount": 3,
         "DisplayName": "Lowerledge Cvst"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/island/oceanledge/kedgebay/kedgeoceanledge_to_lowerledge_cvst_ramp.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Lowerledge Cvst Ramp"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/island/oceanledge/kedgebay/oceanledge_to_lowerledge_stst_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Lowerledge Stst"
     },
     {
         "Name": "Metadata/Terrain/islands/tiles/island/oceanledge/kedgebay/oceanledge_to_unwalkablecliffocean_to_lowerledge_x_01.tdt",
@@ -1939,11 +1926,6 @@
         "Name": "Metadata/Terrain/islands/tiles/island/oceanledgecliff/oceanledgecliff_to_walkablecliffocean_ccst_01.tdt",
         "ExpectedCount": 3,
         "DisplayName": "Walkablecliffocean Ccst"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/island/oceanledgecliff/oceanledgecliff_to_walkablecliffocean_stst_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Walkablecliffocean Stst"
     },
     {
         "Name": "Metadata/Terrain/islands/tiles/island/oceanledgecliff/shrikeisland/oceanledgecliff_to_walkablecliffocean_cccc_01.tdt",
@@ -2076,11 +2058,6 @@
         "DisplayName": "Ocean Cvst"
     },
     {
-        "Name": "Metadata/Terrain/islands/tiles/island/unwalkablecliff/unwalkablecliff_to_ocean_stst_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Ocean Stst"
-    },
-    {
         "Name": "Metadata/Terrain/islands/tiles/island/unwalkablecliff/unwalkablecliff_to_ocean_xmm_01.tdt",
         "ExpectedCount": 3,
         "DisplayName": "Ocean Xmm"
@@ -2131,11 +2108,6 @@
         "DisplayName": "Ocean Cvst"
     },
     {
-        "Name": "Metadata/Terrain/islands/tiles/island/unwalkablecliff/caldera/unwalkablecliff_to_ocean_stst_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Ocean Stst"
-    },
-    {
         "Name": "Metadata/Terrain/islands/tiles/island/unwalkablecliff/isleofkin/unwalkablecliff_to_ocean_cvcv_01.tdt",
         "ExpectedCount": 3,
         "DisplayName": "Ocean Cvcv"
@@ -2144,11 +2116,6 @@
         "Name": "Metadata/Terrain/islands/tiles/island/unwalkablecliff/isleofkin/unwalkablecliff_to_ocean_cvst_01.tdt",
         "ExpectedCount": 3,
         "DisplayName": "Ocean Cvst"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/island/unwalkablecliff/isleofkin/unwalkablecliff_to_ocean_stst_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Ocean Stst"
     },
     {
         "Name": "Metadata/Terrain/islands/tiles/island/unwalkablecliff/isleofkin/unwalkablecliff_to_ocean_xmm_01.tdt",
@@ -2164,11 +2131,6 @@
         "Name": "Metadata/Terrain/islands/tiles/island/unwalkablecliff/journeysend/unwalkablecliff_to_ocean_cvst_01.tdt",
         "ExpectedCount": 3,
         "DisplayName": "Ocean Cvst"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/island/unwalkablecliff/journeysend/unwalkablecliff_to_ocean_stst_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Ocean Stst"
     },
     {
         "Name": "Metadata/Terrain/islands/tiles/island/unwalkablecliff/journeysend/unwalkablecliff_to_ocean_xmm_01.tdt",
@@ -2201,11 +2163,6 @@
         "DisplayName": "Ocean Cvst"
     },
     {
-        "Name": "Metadata/Terrain/islands/tiles/island/unwalkablecliff/kedgebay/unwalkablecliff_to_ocean_stst_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Ocean Stst"
-    },
-    {
         "Name": "Metadata/Terrain/islands/tiles/island/unwalkablecliff/kedgebay/unwalkablecliff_to_shoreline_cvcc_01.tdt",
         "ExpectedCount": 3,
         "DisplayName": "Shoreline Cvcc"
@@ -2234,11 +2191,6 @@
         "Name": "Metadata/Terrain/islands/tiles/island/unwalkablecliff/tropical/unwalkablecliff_to_ocean_cvst_01.tdt",
         "ExpectedCount": 3,
         "DisplayName": "Ocean Cvst"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/island/unwalkablecliff/tropical/unwalkablecliff_to_ocean_stst_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Ocean Stst"
     },
     {
         "Name": "Metadata/Terrain/islands/tiles/island/unwalkablecliff/tropical/unwalkablecliff_to_ocean_xmm_01.tdt",
@@ -2466,11 +2418,6 @@
         "DisplayName": "Ocean Cvst"
     },
     {
-        "Name": "Metadata/Terrain/islands/tiles/island/walkablecliff/walkablecliff_to_ocean_stst_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Ocean Stst"
-    },
-    {
         "Name": "Metadata/Terrain/islands/tiles/island/walkablecliff/walkablecliff_to_ocean_xmm_01.tdt",
         "ExpectedCount": 3,
         "DisplayName": "Ocean Xmm"
@@ -2489,11 +2436,6 @@
         "Name": "Metadata/Terrain/islands/tiles/island/walkablecliff/journeysend/walkablecliff_to_ocean_cvst_01.tdt",
         "ExpectedCount": 3,
         "DisplayName": "Ocean Cvst"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/island/walkablecliff/journeysend/walkablecliff_to_ocean_stst_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "Ocean Stst"
     },
     {
         "Name": "Metadata/Terrain/islands/tiles/island/walkablecliff/journeysend/walkablecliff_to_ocean_xmm_01.tdt",
