@@ -1128,6 +1128,30 @@
       "DisplayName": "Fakapanu Island"
     }
   ],
+  "G4_4_1": [
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/CoralDungeon/Thickwall/CoralSinkhole/Arena/SudokuArena_03.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Pay respects at end"
+    },
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/CoralDungeon/Features/Spiral_Eighths/Sinkhole_Spiral_QuarterHeight_WalkableHalf_01.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Hall of the dead"
+    }
+  ],
+  "G4_4_2": [
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/HallsOfTheDead/CaveWall/Halls_CaveWall_Hinekora_Door_01.tdt",
+      "ExpectedCount": 3,
+      "DisplayName": "3 Test Areas"
+    },
+    {
+      "Name": "Metadata/Terrain/Islands/Tiles/CoralDungeon/Thickwall/CoralSinkhole/Arena/YamaArena_01.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Boss - Yama"
+    }
+  ],
   "MapAlpineRidge": [
     {
       "Name": "pinnacle",
@@ -1346,16 +1370,6 @@
         "Name": "Metadata/Terrain/islands/tiles/coraldungeon/features/area_transition_stww_01.tdt",
         "ExpectedCount": 3,
         "DisplayName": "Area Stww"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/coraldungeon/features/sinkhole_pillar_top_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "P"
-    },
-    {
-        "Name": "Metadata/Terrain/islands/tiles/island/clifftop/unwalkable/clifftop_to_wildcard_stmm_01.tdt",
-        "ExpectedCount": 3,
-        "DisplayName": "P To Wildcard Stmm"
     },
     {
         "Name": "Metadata/Terrain/islands/tiles/island/karuilowerledge/karuilowerledge_unwalkablecliff_to_walkable_stst_01.tdt",
