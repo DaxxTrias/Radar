@@ -41,95 +41,162 @@ public partial class Radar
         }
         else
         {
-            var unwalkableMask = Vector4.UnitX + Vector4.UnitW;
-            var walkableMask = Vector4.UnitY + Vector4.UnitW;
-            if (Settings.Debug.DisableHeightAdjust)
+            if (Settings.Debug.AlternativeEdgeMethod)
             {
-                Parallel.For(0, maxY, y =>
-                {
-                    for (var x = 0; x < maxX; x++)
+                static float Clamp(float value, float min, float max) => MathF.Min(MathF.Max(value, min), max);
+
+                static Vector4 Lerp(Vector4 a, Vector4 b, float t) => a + t * (b - a);
+
+                using var binaryMap = new Image<L8>(configuration, maxX, maxY);
+
+                if (!Settings.Debug.DisableHeightAdjust)
+                    Parallel.For(
+                        0, maxY, y =>
+                        {
+                            for (var x = 0; x < maxX; x++)
+                            {
+                                if (_processedTerrainData[y][x] != 1)
+                                    continue;
+
+                                var cellData = gridHeightData[y][x];
+                                var heightOffset = (int)(cellData / GridToWorldMultiplier / 2);
+                                var adjustedX = x - heightOffset;
+                                var adjustedY = y - heightOffset;
+
+                                if (adjustedX >= 0 && adjustedX < maxX && adjustedY >= 0 && adjustedY < maxY)
+                                    binaryMap[adjustedX, adjustedY] = new L8(255);
+                            }
+                        });
+
+                else
+                    Parallel.For(
+                        0, maxY, y =>
+                        {
+                            for (var x = 0; x < maxX; x++)
+                                if (_processedTerrainData[y][x] != 1)
+                                    binaryMap[x, y] = new L8(255);
+                        });
+
+                var blurSigma = Settings.Debug.AlternativeEdgeSettings.OutlineBlurSigma.Value;
+                binaryMap.Mutate(ctx => ctx.GaussianBlur(blurSigma));
+
+                var eps = Settings.Debug.AlternativeEdgeSettings.OutlineTransitionThreshold.Value;
+                var aaWidth = Settings.Debug.AlternativeEdgeSettings.OutlineFeatherWidth.Value;
+
+                Parallel.For(
+                    0, maxY, y =>
                     {
-                        var terrainType = _processedTerrainData[y][x];
-                        image[x, y] = new Rgba32(terrainType is 0 ? unwalkableMask : walkableMask);
-                    }
-                });
+                        for (var x = 0; x < maxX; x++)
+                        {
+                            var t = binaryMap[x, y].PackedValue / 255f;
+
+                            var walkableToEdge = Clamp((t - (eps - aaWidth)) / aaWidth, 0f, 1f);
+                            var edgeToUnwalkable = Clamp((t - (1f - eps)) / aaWidth, 0f, 1f);
+
+                            var walkableColor = new Vector4(1f, 1f, 1f, 0.00f);
+                            var outlineTarget = Settings.TerrainColor.Value.ToImguiVec4();
+
+                            var color = Lerp(walkableColor, outlineTarget, walkableToEdge);
+                            color = Lerp(color, color with { W = 0f }, edgeToUnwalkable);
+
+                            color = new Vector4(Clamp(color.X, 0f, 1f), Clamp(color.Y, 0f, 1f), Clamp(color.Z, 0f, 1f), Clamp(color.W, 0f, 1f));
+
+                            image[x, y] = new Rgba32(color.X, color.Y, color.Z, color.W);
+                        }
+                    });
             }
             else
             {
-                Parallel.For(0, maxY, y =>
+                var unwalkableMask = Vector4.UnitX + Vector4.UnitW;
+                var walkableMask = Vector4.UnitY + Vector4.UnitW;
+                if (Settings.Debug.DisableHeightAdjust)
                 {
-                    for (var x = 0; x < maxX; x++)
+                    Parallel.For(0, maxY, y =>
                     {
-                        var cellData = gridHeightData[y][x / 2 * 2];
-
-                        //basically, offset x and y by half the offset z would cause when rendering in 3d
-                        var heightOffset = (int)(cellData / GridToWorldMultiplier / 2);
-                        var offsetX = x - heightOffset;
-                        var offsetY = y - heightOffset;
-                        var terrainType = _processedTerrainData[y][x];
-                        if (offsetX >= 0 && offsetX < maxX && offsetY >= 0 && offsetY < maxY)
+                        for (var x = 0; x < maxX; x++)
                         {
-                            image[offsetX, offsetY] = new Rgba32(terrainType is 0 ? unwalkableMask : walkableMask);
+                            var terrainType = _processedTerrainData[y][x];
+                            image[x, y] = new Rgba32(terrainType is 0 ? unwalkableMask : walkableMask);
                         }
-                    }
-                });
-            }
-
-            if (!Settings.Debug.SkipNeighborFill)
-            {
-                Parallel.For(0, maxY, y =>
+                    });
+                }
+                else
                 {
-                    for (var x = 0; x < maxX; x++)
+                    Parallel.For(0, maxY, y =>
                     {
-                        //this fills in the blanks that are left over from the height projection
-                        if (image[x, y].ToVector4() == Vector4.Zero)
+                        for (var x = 0; x < maxX; x++)
                         {
-                            var countWalkable = 0;
-                            var countUnwalkable = 0;
-                            for (var xO = -1; xO < 2; xO++)
+                            var cellData = gridHeightData[y][x / 2 * 2];
+
+                            //basically, offset x and y by half the offset z would cause when rendering in 3d
+                            var heightOffset = (int)(cellData / GridToWorldMultiplier / 2);
+                            var offsetX = x - heightOffset;
+                            var offsetY = y - heightOffset;
+                            var terrainType = _processedTerrainData[y][x];
+                            if (offsetX >= 0 && offsetX < maxX && offsetY >= 0 && offsetY < maxY)
                             {
-                                for (var yO = -1; yO < 2; yO++)
+                                image[offsetX, offsetY] = new Rgba32(terrainType is 0 ? unwalkableMask : walkableMask);
+                            }
+                        }
+                    });
+                }
+
+                if (!Settings.Debug.StandardEdgeSettings.SkipNeighborFill)
+                {
+                    Parallel.For(0, maxY, y =>
+                    {
+                        for (var x = 0; x < maxX; x++)
+                        {
+                            //this fills in the blanks that are left over from the height projection
+                            if (image[x, y].ToVector4() == Vector4.Zero)
+                            {
+                                var countWalkable = 0;
+                                var countUnwalkable = 0;
+                                for (var xO = -1; xO < 2; xO++)
                                 {
-                                    var xx = x + xO;
-                                    var yy = y + yO;
-                                    if (xx >= 0 && xx < maxX && yy >= 0 && yy < maxY)
+                                    for (var yO = -1; yO < 2; yO++)
                                     {
-                                        var nPixel = image[x + xO, y + yO].ToVector4();
-                                        if (nPixel == walkableMask)
-                                            countWalkable++;
-                                        else if (nPixel == unwalkableMask)
-                                            countUnwalkable++;
+                                        var xx = x + xO;
+                                        var yy = y + yO;
+                                        if (xx >= 0 && xx < maxX && yy >= 0 && yy < maxY)
+                                        {
+                                            var nPixel = image[x + xO, y + yO].ToVector4();
+                                            if (nPixel == walkableMask)
+                                                countWalkable++;
+                                            else if (nPixel == unwalkableMask)
+                                                countUnwalkable++;
+                                        }
                                     }
                                 }
+
+                                image[x, y] = new Rgba32(countWalkable > countUnwalkable ? walkableMask : unwalkableMask);
                             }
-
-                            image[x, y] = new Rgba32(countWalkable > countUnwalkable ? walkableMask : unwalkableMask);
                         }
-                    }
-                });
-            }
+                    });
+                }
 
-            if (!Settings.Debug.SkipEdgeDetector)
-            {
-                var edgeDetector = new EdgeDetectorProcessor(EdgeDetectorKernel.Laplacian5x5, false)
-                   .CreatePixelSpecificProcessor(configuration, image, image.Bounds());
-                edgeDetector.Execute();
-            }
-
-            if (!Settings.Debug.SkipRecoloring)
-            {
-                image.Mutate(configuration, c => c.ProcessPixelRowsAsVector4((row, p) =>
+                if (!Settings.Debug.StandardEdgeSettings.SkipEdgeDetector)
                 {
-                    for (var x = 0; x < row.Length - 0; x++)
+                    var edgeDetector = new EdgeDetectorProcessor(EdgeDetectorKernel.Laplacian5x5, false)
+                       .CreatePixelSpecificProcessor(configuration, image, image.Bounds());
+                    edgeDetector.Execute();
+                }
+
+                if (!Settings.Debug.StandardEdgeSettings.SkipRecoloring)
+                {
+                    image.Mutate(configuration, c => c.ProcessPixelRowsAsVector4((row, p) =>
                     {
-                        row[x] = row[x] switch
+                        for (var x = 0; x < row.Length - 0; x++)
                         {
-                            { X: 1 } => Settings.TerrainColor.Value.ToImguiVec4(),
-                            { X: 0 } => Vector4.Zero,
-                            var s => s
-                        };
-                    }
-                }));
+                            row[x] = row[x] switch
+                            {
+                                { X: 1 } => Settings.TerrainColor.Value.ToImguiVec4(),
+                                { X: 0 } => Vector4.Zero,
+                                var s => s
+                            };
+                        }
+                    }));
+                }
             }
         }
 
@@ -154,7 +221,7 @@ public partial class Radar
         }
 
         //unfortunately the library doesn't respect our allocation settings above
-        
+
         using var imageCopy = image.Clone(configuration);
         imageCopy.Save("test.png");
         Graphics.AddOrUpdateImage(TextureName, imageCopy);

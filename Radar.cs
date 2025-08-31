@@ -55,8 +55,8 @@ public partial class Radar : BaseSettingsPlugin<RadarSettings>
         GameController.PluginBridge.SaveMethod("Radar.ClusterTarget",
             (string targetName, int expectedCount) => ClusterTarget(targetName, expectedCount));
 
-        Input.RegisterKey(Settings.ManuallyDumpInstance);
-        Settings.ManuallyDumpInstance.OnValueChanged += () => { Input.RegisterKey(Settings.ManuallyDumpInstance); };
+        Input.RegisterKey(Settings.ManuallyDumpInstance.Value);
+        Settings.ManuallyDumpInstance.OnValueChanged += () => { Input.RegisterKey(Settings.ManuallyDumpInstance.Value); };
         return true;
     }
 
@@ -80,13 +80,24 @@ public partial class Radar : BaseSettingsPlugin<RadarSettings>
 
             if (Settings.AutoDumpInstanceOnAreaChange)
             {
-                DumpInstanceData($@"{DirectoryFullName}\instance_dumps\{GameController.Area.CurrentArea.Area.RawName}.json");
+                Task.Run(() =>
+                {
+                    DumpInstanceData($@"{DirectoryFullName}\instance_dumps\{GameController.Area.CurrentArea.Area.RawName}_{SanitizeAreaName(GameController.Area.CurrentArea.Area.Name)}.json.gz");
+                });
             }
 
             GenerateMapTexture();
             _clusteredTargetLocations = ClusterTargets();
             StartPathFinding();
         }
+    }
+
+    private static string SanitizeAreaName(string name)
+    {
+        return name.Replace(" ", "_")
+            .Replace(":", "")
+            .Replace("/", "")
+            .Replace("\\", "");
     }
 
     public override void DrawSettings()
@@ -98,13 +109,13 @@ public partial class Radar : BaseSettingsPlugin<RadarSettings>
     private static readonly List<Color> RainbowColors = new List<Color>
     {
         Color.Red,
-        Color.Green,
-        Color.Blue,
-        Color.Yellow,
-        Color.Violet,
-        Color.Orange,
+        Color.LightGreen,
         Color.White,
+        Color.Yellow,
         Color.LightBlue,
+        Color.Violet,
+        Color.Blue,
+        Color.Orange,
         Color.Indigo,
     };
 
@@ -122,11 +133,15 @@ public partial class Radar : BaseSettingsPlugin<RadarSettings>
         Settings.MaximumPathCount.OnValueChanged += (_, _) => { Task.Run(RestartPathFinding); };
         Settings.TerrainColor.OnValueChanged += (_, _) => { GenerateMapTexture(); };
         Settings.Debug.DrawHeightMap.OnValueChanged += (_, _) => { GenerateMapTexture(); };
-        Settings.Debug.SkipEdgeDetector.OnValueChanged += (_, _) => { GenerateMapTexture(); };
-        Settings.Debug.SkipNeighborFill.OnValueChanged += (_, _) => { GenerateMapTexture(); };
-        Settings.Debug.SkipRecoloring.OnValueChanged += (_, _) => { GenerateMapTexture(); };
+        Settings.Debug.StandardEdgeSettings.SkipEdgeDetector.OnValueChanged += (_, _) => { GenerateMapTexture(); };
+        Settings.Debug.StandardEdgeSettings.SkipNeighborFill.OnValueChanged += (_, _) => { GenerateMapTexture(); };
+        Settings.Debug.StandardEdgeSettings.SkipRecoloring.OnValueChanged += (_, _) => { GenerateMapTexture(); };
         Settings.Debug.DisableHeightAdjust.OnValueChanged += (_, _) => { GenerateMapTexture(); };
         Settings.MaximumMapTextureDimension.OnValueChanged += (_, _) => { GenerateMapTexture(); };
+        Settings.Debug.AlternativeEdgeMethod.OnValueChanged += (_, _) => { GenerateMapTexture(); };
+        Settings.Debug.AlternativeEdgeSettings.OutlineBlurSigma.OnValueChanged += (_, _) => { GenerateMapTexture(); };
+        Settings.Debug.AlternativeEdgeSettings.OutlineTransitionThreshold.OnValueChanged += (_, _) => { GenerateMapTexture(); };
+        Settings.Debug.AlternativeEdgeSettings.OutlineFeatherWidth.OnValueChanged += (_, _) => { GenerateMapTexture(); };
     }
 
     public override void EntityAdded(Entity entity)
@@ -173,7 +188,10 @@ public partial class Radar : BaseSettingsPlugin<RadarSettings>
     {
         if (Settings.ManuallyDumpInstance.PressedOnce())
         {
-            DumpInstanceData($@"{DirectoryFullName}\instance_dumps\{GameController.Area.CurrentArea.Area.RawName}.json");
+            Task.Run(() =>
+            {
+                DumpInstanceData($@"{DirectoryFullName}\instance_dumps\{GameController.Area.CurrentArea.Area.RawName}_{SanitizeAreaName(GameController.Area.CurrentArea.Area.Name)}.json.gz");
+            });
         }
 
         var ingameUi = GameController.Game.IngameState.IngameUi;
