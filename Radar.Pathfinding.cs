@@ -148,7 +148,15 @@ public partial class Radar
     private async Task FindPath(PathFinder pf, Vector2 point, Action<List<Vector2i>> callback, CancellationToken cancellationToken)
     {
         var playerPosition = GetPlayerPosition();
-        foreach (var elem in pf.RunFirstScan(new Vector2i((int)playerPosition.X, (int)playerPosition.Y), new Vector2i((int)point.X, (int)point.Y)))
+
+        // Compute grid bounds for clamping
+        int maxY = _processedTerrainData?.Length > 0 ? _processedTerrainData.Length - 1 : 0;
+        int maxX = maxY > 0 ? _processedTerrainData[0].Length - 1 : 0;
+        Vector2i Clamp(Vector2i p) => new Vector2i(Math.Clamp(p.X, 0, maxX), Math.Clamp(p.Y, 0, maxY));
+
+        var start0 = Clamp(new Vector2i((int)playerPosition.X, (int)playerPosition.Y));
+        var target0 = Clamp(new Vector2i((int)point.X, (int)point.Y));
+        foreach (var elem in pf.RunFirstScan(start0, target0))
         {
             await WaitUntilPluginEnabled(cancellationToken);
             if (cancellationToken.IsCancellationRequested)
@@ -178,8 +186,18 @@ public partial class Radar
             }
 
             playerPosition = newPosition;
-            var path = pf.FindPath(new Vector2i((int)playerPosition.X, (int)playerPosition.Y), new Vector2i((int)point.X, (int)point.Y));
-            callback(path);
+            var start = Clamp(new Vector2i((int)playerPosition.X, (int)playerPosition.Y));
+            var target = Clamp(new Vector2i((int)point.X, (int)point.Y));
+            try
+            {
+                var path = pf.FindPath(start, target);
+                callback(path);
+            }
+            catch (Exception)
+            {
+                // Swallow to avoid unobserved task exceptions; caller treats null as no path
+                callback(null);
+            }
         }
     }
 
@@ -316,17 +334,28 @@ public partial class Radar
 
     private bool IsGridWalkable(Vector2i tile)
     {
-        return _processedTerrainData[tile.Y][tile.X] is 5 or 4;
+        if (_processedTerrainData == null || _processedTerrainData.Length == 0)
+            return false;
+        if (tile.Y < 0 || tile.Y >= _processedTerrainData.Length)
+            return false;
+        var row = _processedTerrainData[tile.Y];
+        if (row == null || tile.X < 0 || tile.X >= row.Length)
+            return false;
+        return row[tile.X] is 5 or 4;
     }
 
     private IEnumerable<Vector2i> GetAllNeighborTiles(Vector2i start)
     {
+        if (_areaDimensions == null)
+            yield break;
+        var maxX = Math.Max(0, _areaDimensions.Value.X - 1);
+        var maxY = Math.Max(0, _areaDimensions.Value.Y - 1);
         foreach (var range in Enumerable.Range(1, 100000))
         {
             var xStart = Math.Max(0, start.X - range);
             var yStart = Math.Max(0, start.Y - range);
-            var xEnd = Math.Min(_areaDimensions.Value.X, start.X + range);
-            var yEnd = Math.Min(_areaDimensions.Value.Y, start.Y + range);
+            var xEnd = Math.Min(maxX, start.X + range);
+            var yEnd = Math.Min(maxY, start.Y + range);
             for (var x = xStart; x <= xEnd; x++)
             {
                 yield return new Vector2i(x, yStart);
@@ -339,7 +368,7 @@ public partial class Radar
                 yield return new Vector2i(xEnd, y);
             }
 
-            if (xStart == 0 && yStart == 0 && xEnd == _areaDimensions.Value.X && yEnd == _areaDimensions.Value.Y)
+            if (xStart == 0 && yStart == 0 && xEnd == maxX && yEnd == maxY)
             {
                 break;
             }

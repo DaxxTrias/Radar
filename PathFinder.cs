@@ -163,14 +163,28 @@ public class PathFinder
 
     public List<Vector2i> FindPath(Vector2i start, Vector2i target)
     {
+        // Guard: ensure inputs are within grid and pathable
+        if (start.X < 0 || start.Y < 0 || start.X >= _dimension2 || start.Y >= _dimension1)
+            return null;
+        if (target.X < 0 || target.Y < 0 || target.X >= _dimension2 || target.Y >= _dimension1)
+            return null;
+        if (!IsTilePathable(start) || !IsTilePathable(target))
+            return null;
+
         if (DirectionField.GetValueOrDefault(target) is { } directionField)
         {
+            // Guard: current index in bounds
+            if (start.Y < 0 || start.Y >= directionField.Length || start.X < 0 || start.X >= directionField[start.Y].Length)
+                return null;
             if (directionField[start.Y][start.X] == 0)
                 return null;
             var path = new List<Vector2i>();
             var current = start;
             while (current != target)
             {
+                // Guard each step
+                if (current.Y < 0 || current.Y >= directionField.Length || current.X < 0 || current.X >= directionField[current.Y].Length)
+                    return null;
                 var directionIndex = directionField[current.Y][current.X];
                 if (directionIndex == 0)
                 {
@@ -178,6 +192,9 @@ public class PathFinder
                 }
 
                 var next = NeighborOffsets[directionIndex - 1] + current;
+                // Guard next step bounds before continuing
+                if (next.X < 0 || next.Y < 0 || next.X >= _dimension2 || next.Y >= _dimension1)
+                    return null;
                 path.Add(next);
                 current = next;
             }
@@ -193,6 +210,9 @@ public class PathFinder
             while (current != target)
             {
                 var next = GetNeighbors(current).MinBy(x => GetExactDistance(x, exactDistanceField));
+                // Guard next step bounds
+                if (next.X < 0 || next.Y < 0 || next.X >= _dimension2 || next.Y >= _dimension1)
+                    return null;
                 path.Add(next);
                 current = next;
             }

@@ -260,6 +260,7 @@ public partial class Radar : BaseSettingsPlugin<RadarSettings>
                 return;
             var initPos = GameController.IngameState.Camera.WorldToScreen(playerRender.Pos with { Z = playerRender.RenderStruct.Height });
             foreach (var (route, offsetAmount) in _routes.Values
+                         .Where(r => r?.Path != null && r.Path.Count > 0)
                          .GroupBy(x => x.Path.Count < 2 ? 0 : (x.Path[1] - x.Path[0]) switch { var diff => Math.Atan2(diff.Y, diff.X) })
                          .SelectMany(group => group.Select((route, i) => (route, i - group.Count() / 2.0f + 0.5f))))
             {
@@ -268,8 +269,13 @@ public partial class Radar : BaseSettingsPlugin<RadarSettings>
                 var i = 0;
                 foreach (var elem in route.Path)
                 {
+                    if (elem.Y < 0 || elem.Y >= _heightData.Length)
+                        break;
+                    var row = _heightData[elem.Y];
+                    if (elem.X < 0 || elem.X >= row.Length)
+                        break;
                     var p1 = GameController.IngameState.Camera.WorldToScreen(
-                        new Vector3(elem.X * GridToWorldMultiplier, elem.Y * GridToWorldMultiplier, _heightData[elem.Y][elem.X]));
+                        new Vector3(elem.X * GridToWorldMultiplier, elem.Y * GridToWorldMultiplier, row[elem.X]));
                     var offsetDirection = Settings.PathfindingSettings.WorldPathSettings.OffsetPaths
                         ? (p1 - p0) switch { var s => new Vector2(s.Y, -s.X) / s.Length() }
                         : Vector2.Zero;
@@ -341,11 +347,18 @@ public partial class Radar : BaseSettingsPlugin<RadarSettings>
         {
             foreach (var route in _routes.Values)
             {
+                if (route?.Path == null || route.Path.Count == 0)
+                    continue;
                 ithElement++;
                 ithElement %= 5;
                 foreach (var elem in route.Path.Skip(ithElement).GetEveryNth(5))
                 {
-                    var mapDelta = TranslateGridDeltaToMapDelta(new Vector2(elem.X, elem.Y) - playerPosition, playerHeight + _heightData[elem.Y][elem.X]);
+                    if (elem.Y < 0 || elem.Y >= _heightData.Length)
+                        break;
+                    var row = _heightData[elem.Y];
+                    if (elem.X < 0 || elem.X >= row.Length)
+                        break;
+                    var mapDelta = TranslateGridDeltaToMapDelta(new Vector2(elem.X, elem.Y) - playerPosition, playerHeight + row[elem.X]);
                     DrawBox(mapCenter + mapDelta - new Vector2(2, 2), mapCenter + mapDelta + new Vector2(2, 2), route.MapColor());
                 }
             }
@@ -365,7 +378,12 @@ public partial class Radar : BaseSettingsPlugin<RadarSettings>
 
                 var text = string.Join("\n", texts.Distinct().Where(TargetFilter));
                 var textOffset = Graphics.MeasureText(text) / 2f;
-                var mapDelta = TranslateGridDeltaToMapDelta(location - playerPosition, playerHeight + _heightData[location.Y][location.X]);
+                if (location.Y < 0 || location.Y >= _heightData.Length)
+                    continue;
+                var row = _heightData[location.Y];
+                if (location.X < 0 || location.X >= row.Length)
+                    continue;
+                var mapDelta = TranslateGridDeltaToMapDelta(location - playerPosition, playerHeight + row[location.X]);
                 var mapPos = mapCenter + mapDelta;
                 if (Settings.PathfindingSettings.EnableTargetNameBackground)
                     DrawBox(mapPos - textOffset, mapPos + textOffset, Color.Black);
@@ -379,8 +397,14 @@ public partial class Radar : BaseSettingsPlugin<RadarSettings>
                 foreach (var clusterPosition in description.Locations)
                 {
                     float clusterHeight = 0;
-                    if (clusterPosition.X < _heightData[0].Length && clusterPosition.Y < _heightData.Length)
-                        clusterHeight = _heightData[(int)clusterPosition.Y][(int)clusterPosition.X];
+                    int cy = (int)clusterPosition.Y;
+                    int cx = (int)clusterPosition.X;
+                    if (cx >= 0 && cy >= 0 && cy < _heightData.Length)
+                    {
+                        var row = _heightData[cy];
+                        if (cx < row.Length)
+                            clusterHeight = row[cx];
+                    }
                     var text = description.DisplayName;
                     var textOffset = Graphics.MeasureText(text) / 2f;
                     var mapDelta = TranslateGridDeltaToMapDelta(clusterPosition - playerPosition, playerHeight + clusterHeight);
