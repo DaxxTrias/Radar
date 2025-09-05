@@ -17,7 +17,7 @@
       "ExpectedCount": 1,
       "DisplayName": "Mud Burrow"
     },
-	{
+  {
       "Name": "Metadata/Terrain/Woods/AreaTransitions/FallenTreeSlash_in.tdt",
       "ExpectedCount": 1,
       "DisplayName": "Mud Burrow"
@@ -117,7 +117,7 @@
       "ExpectedCount": 1,
       "DisplayName": "Areagne's Hut (Support Gem Level 1 and Flasks)"
     },    
-	{
+  {
       "Name": "BurnTheWitch",
       "ExpectedCount": 1,
       "DisplayName": "Areagne's Hut (Support Gem Level 1 and Flasks)"
@@ -169,12 +169,12 @@
       "DisplayName": "Random ring 1 of 2 locations"
     },
     {
-      "Name": "mausoleum_transition",
+      "Name": "Metadata/Terrain/Woods/Graveyard/Feature/mausoleum_01.tdt",
       "ExpectedCount": 1,
       "DisplayName": "Mausoleum of the Praetor"
     },
     {
-      "Name": "tomb_transition",
+      "Name": "Metadata/Terrain/Woods/Graveyard/Feature/tomb_01.tdt",
       "ExpectedCount": 1,
       "DisplayName": "Tomb of the Consort"
     }
@@ -486,7 +486,19 @@
     {
       "Name": "Metadata/Terrain/Desert/Badlands/Features/Landmark_feature_02.tdt",
       "ExpectedCount": 1,
-      "DisplayName": "Fossilised Memorial (Support Gem Level 1))"
+      "DisplayName": "Fossilised Memorial (Support Gem Level 1)"
+    },
+    {
+      "Name": "Metadata/Terrain/Desert/Badlands/Features/AbyssHole.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Lightless Passage"
+    }
+  ],
+  "Abyss_Intro": [
+    {
+      "Name": "Metadata/Terrain/Gallows/Leagues/Abyss/AbyssHub/Tiles/AbyssPitFeature_01.tdt",
+      "ExpectedCount": 1,
+      "DisplayName": "Rare Fight"
     }
   ],
   "G2_5_2": [
@@ -1103,7 +1115,7 @@
     {
       "Name": "Metadata/Terrain/Islands/Tiles/TropicalIsland/Features/TropicalCoastCliff_CrabCave_01.tdt",
       "ExpectedCount": 1,
-      "DisplayName": "Crab Rare"
+      "DisplayName": "Singing Caverns"
     }
   ],
   "G4_3_2": [
@@ -1115,7 +1127,7 @@
     {
       "Name": "Metadata/Terrain/Islands/Tiles/CoralDungeon/Features/CoveTreasure_01.tdt",
       "ExpectedCount": 1,
-      "DisplayName": "Treasure"
+      "DisplayName": "Quest - Humming Pearl"
     },
     {
       "Name": "Metadata/Terrain/Islands/Tiles/CoralDungeon/Features/EggRoom_WW_01.tdt",
@@ -1125,7 +1137,7 @@
     {
       "Name": "Metadata/Terrain/Islands/Tiles/CoralDungeon/Features/SirenCoveEntrance_01.tdt",
       "ExpectedCount": 1,
-      "DisplayName": "Fakapanu Island"
+      "DisplayName": "Whakapanu Island"
     }
   ],
   "G4_4_1": [
