@@ -1588,6 +1588,11 @@
   ],
   "*": [
     {
+        "Name": "Metadata/Terrain/Leagues/Incursion/Tiles/Features/Waygates/WaygateDevice*.tdt",
+        "ExpectedCount": 1,
+        "DisplayName": "Temple"
+    },
+    {
         "Name": "Metadata/Terrain/islands/tiles/bloodfever/wharewall/alleyway_to_smallalley_ccst_01.tdt",
         "ExpectedCount": 3,
         "DisplayName": "Smallalley Ccst"
