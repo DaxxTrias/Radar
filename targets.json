@@ -1993,7 +1993,18 @@
       "Rooms": [ "*mission*" ],
       "ExpectedCount": 1,
       "DisplayName": "League Mechanic"
-
+    },
+    {
+      "Name": "Metadata/MiscellaneousObjects/Expedition2/Expedition2Encounter",
+      "ExpectedCount": 1,
+      "DisplayName": "League Mechanic",
+      "TargetType": "Entity"
+    },
+    {
+      "Name": "*",
+      "Rooms": [ "*rune*" ],
+      "ExpectedCount": 1,
+      "DisplayName": "Rune"
     },
     {
       "Name": "Metadata/Terrain/Leagues/Incursion/Tiles/Features/Waygates/WaygateDevice*.tdt",
