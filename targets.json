@@ -2007,6 +2007,12 @@
       "DisplayName": "Rune"
     },
     {
+      "Name": "*",
+      "Rooms": [ "*boss*" ],
+      "ExpectedCount": 1,
+      "DisplayName": "Boss Room"
+    },
+    {
       "Name": "Metadata/Terrain/Leagues/Incursion/Tiles/Features/Waygates/WaygateDevice*.tdt",
       "ExpectedCount": 1,
       "DisplayName": "Temple"
