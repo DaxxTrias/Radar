@@ -2194,6 +2194,12 @@
       "ExpectedCount": 99,
       "DisplayName": "Lever",
       "TargetType": "Entity"
+    },
+    {
+      "Name": "*",
+      "Rooms": [ "*boss*" ],
+      "ExpectedCount": 1,
+      "DisplayName": "Boss Room"
     }
   ]
 }
