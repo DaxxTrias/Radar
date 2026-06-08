@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Drawing;
@@ -287,7 +287,7 @@ public partial class Radar
     {
         var locations = (target.Alternatives ?? []).Prepend(target)
             .Select(tAlt => ClusterTarget(tAlt.Name, tAlt.Rooms, tAlt.ExpectedCount))
-            .FirstOrDefault(x => x != null);
+            .FirstOrDefault(x => x.Length > 0);
         if (locations == null) return null;
         return new TargetLocations
         {
@@ -301,7 +301,7 @@ public partial class Radar
         var tileList = GetLocationsFromTilePattern(targetName, rooms);
         if (tileList is not { Count: > 0 })
         {
-            return null;
+            return [];
         }
 
         var clusterIndexes = KMeans.Cluster(tileList.Select(x => new Vector2d(x.X, x.Y)).ToArray(), expectedCount);
@@ -330,7 +330,17 @@ public partial class Radar
 
             if (!IsGridWalkable(v.Truncate()))
             {
-                v = GetAllNeighborTiles(v.Truncate()).First(IsGridWalkable);
+                var nearestWalkableTile = GetAllNeighborTiles(v.Truncate())
+                    .Where(IsGridWalkable)
+                    .Select(x => (Vector2i?)x)
+                    .FirstOrDefault();
+
+                if (nearestWalkableTile == null)
+                {
+                    continue;
+                }
+
+                v = nearestWalkableTile.Value;
             }
 
             resultList.Add(v);
